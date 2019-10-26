@@ -1,6 +1,7 @@
 from bikeca.domain.port.repository.trip import TripRepository
 from bikeca.domain.port.usecases.stats import Stats
 from bikeca.domain.model.gender import Gender
+from bikeca.domain.model.types import Types
 from bikeca.adapter.repository.trip_repository_impl import TripRepositoryImpl
 from bikeca.adapter.stats.trip_stats_impl import TripStatsImpl
 from bikeca.domain.model.trip import Trip
@@ -26,8 +27,14 @@ class TripStatsTest(unittest.TestCase):
         self.assertEqual(female, 298784)
 
     def test_trip_most_popular_gender(self):
-        gender: Gender = self._stats.most_popular_gender(self._stats.only_gender(self._trips))
+        male, female = self._stats.count_gender(self._stats.only_gender(self._trips))
+        gender: Gender = self._stats.most_popular_gender(male, female)
         self.assertEqual(gender, Gender.MASCULINO)
+
+    def test_trip_most_popular_user_types(self):
+        customer, subscriber = self._stats.count_user_types(self._stats.only_user_types(self._trips))
+        user_type: Types = self._stats.most_popular_user_types(customer, subscriber)
+        self.assertEqual(user_type, Types.SUBSCRIBER)
 
     def test_trip_stats_min(self):
         min_trip: float = self._stats.min_trip(self._stats.only_duration(self._trips))

@@ -41,7 +41,7 @@ class Stats(metaclass=ABCMeta):
         raise NotImplementedError("stats must define only_duration method")
 
     @abstractmethod
-    def count_gender(self, trips: List[Trip]) -> Tuple[int, int]:
+    def count_gender(self, genders: List[str]) -> Tuple[int, int]:
         """
         Função para contabilizar os gêneros do conjunto de dados
         Argumentos:
@@ -52,7 +52,7 @@ class Stats(metaclass=ABCMeta):
         raise NotImplementedError("stats must define count_gender method")
 
     @abstractmethod
-    def count_user_types(self, trips: List[Trip]) -> Tuple[int, int]:
+    def count_user_types(self, types: List[str]) -> Tuple[int, int]:
         """
         Função para contabilizar os tipos de usuário do conjunto de dados
         Argumentos:
@@ -63,7 +63,7 @@ class Stats(metaclass=ABCMeta):
         raise NotImplementedError("stats must define count_user_types method")
 
     @abstractmethod
-    def most_popular_gender(self, trips: List[Trip]) -> Gender:
+    def most_popular_gender(self, male: int, female: int) -> Gender:
         """
         Função para classificar o gênero mais popular no conjunto de dados
         Argumentos:
@@ -74,7 +74,7 @@ class Stats(metaclass=ABCMeta):
         raise NotImplementedError("stats must define most_popular_gender method")
 
     @abstractmethod
-    def most_popular_user_types(self, trips: List[Trip]) -> Types:
+    def most_popular_user_types(self, customer: int, subscriber: int) -> Types:
         """
         Função para classificar o tipo de usuário mais popular no conjunto de dados
         Argumentos:
