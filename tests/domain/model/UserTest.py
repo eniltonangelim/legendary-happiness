@@ -1,22 +1,22 @@
 import unittest
-from bikeca.domain.model.User import User
+from bikeca.domain.model.user import User
 
 
 class UserTest(unittest.TestCase):
 
-    __user: User = User('Customer', 'Male', 1989.0)
+    _user: User = User('Customer', 'Male', 1989.0)
 
     def test_user_instance(self):
-        self.assertIsInstance(self.__user, User)
+        self.assertIsInstance(self._user, User)
 
     def test_user_birth_year(self):
-        self.assertEqual(self.__user.getbirthyear(), 1989.0)
+        self.assertEqual(self._user.birth_year, 1989.0)
 
     def test_user_type(self):
-        self.assertEqual(self.__user.gettype(), 'Customer')
+        self.assertEqual(self._user.type, 'Customer')
 
     def test_user_gender(self):
-        self.assertEqual(self.__user.getgender(), 'Male')
+        self.assertEqual(self._user.gender, 'Male')
 
 
 if __name__ == '__main__':

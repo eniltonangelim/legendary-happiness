@@ -2,3 +2,5 @@ imutils
 flask
 numpy
 scikit-learn
+matplotlib
+pandas
